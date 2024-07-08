@@ -11,10 +11,12 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @MappedSuperclass
+@ToString
 public abstract class BaseEntity 
 {
     @Id

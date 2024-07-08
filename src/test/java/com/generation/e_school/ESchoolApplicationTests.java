@@ -1,11 +1,15 @@
 package com.generation.e_school;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.generation.e_school.dto.StudentDTO;
+import com.generation.e_school.dto.mappers.StudentMapper;
 import com.generation.e_school.model.Student;
 import com.generation.e_school.model.Teacher;
 import com.generation.e_school.repositories.PersonRepository;
@@ -28,23 +32,11 @@ class ESchoolApplicationTests
 	void contextLoads() 
 	{
 
-		Student s = new Student();
-		s.setName("Stefano");
-		s.setSurname("Rubinetti");
-		s.setEmail("no");
-		s.setDob(LocalDate.of(1995, 8, 27));
-		s.setClassRoom("5A");
+		Student s = sRepo.findById(1).get();
+		
+		StudentDTO dto = StudentMapper.ISTANCE.toDTO(s);
 
-		sRepo.save(s);
-
-		Teacher t = new Teacher();
-		t.setName("Estaban");
-		t.setSurname("Rubinettis");
-		t.setEmail("no");
-		t.setDob(LocalDate.of(1990, 8, 27));
-		t.setSubject("JAVA");
-
-		tRepo.save(t);
+		assertEquals("s", s.toString());
 	}
 
 }

@@ -1,16 +1,17 @@
-package com.generation.e_school.model;
+package com.generation.e_school.dto;
 
-import jakarta.persistence.Entity;
+import com.generation.e_school.model.Student;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class Student extends Person
+public class StudentDTO extends PersonDTO
 {
+
     private String classRoom;
 
 }
