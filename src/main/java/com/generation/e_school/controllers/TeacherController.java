@@ -4,33 +4,29 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.e_school.dto.StudentDTO;
-import com.generation.e_school.dto.StudentDTOwGrades;
-import com.generation.e_school.dto.mappers.StudentService;
-import com.generation.e_school.model.Student;
-import com.generation.e_school.repositories.StudentRepository;
-
-
+import com.generation.e_school.dto.TeacherDTO;
+import com.generation.e_school.dto.mappers.TeacherService;
+import com.generation.e_school.model.Teacher;
+import com.generation.e_school.repositories.TeacherRepository;
 
 
 @RestController
-@RequestMapping("/api/students")
-public class StudentController 
+@RequestMapping("/api/teachers")
+public class TeacherController 
 {
 
     @Autowired
-    StudentRepository repo;
+    TeacherRepository repo;
     @Autowired
-    StudentService ser;
+    TeacherService ser;
 
     @GetMapping
-    public List<StudentDTO> getAll() 
+    public List<TeacherDTO> getAll() 
     {
         // return  repo 
         //         .findAll()      //leggo da db tutti gli studenti
@@ -40,37 +36,21 @@ public class StudentController
 
         return ser.toDTO(repo.findAll());
     }
-
-    @GetMapping("/{id}")
-    public StudentDTOwGrades getOne(@PathVariable Integer id) 
-    {
-
-        return ser.toDTOwGrades(repo.findById(id).get());
-    }
     
 
     @PostMapping
-    public StudentDTO insertNewStudent(@RequestBody StudentDTO dto) 
+    public TeacherDTO insertNewTeacher(@RequestBody TeacherDTO dto) 
     {
         //Tramite @RequestBody Trasformo il JSON che mi arriva con la request in uno StudentDTO
         //Tramite il servizio del Mapper trasformo quel DTO in  una Entity
-        Student s = ser.toEntity(dto);
+        Teacher t = ser.toEntity(dto);
 
         //Che poi vado a salvare
-        s = repo.save(s);
+        t =repo.save(t);
 
         //restituisco la entity come è stata salvata sotto forma di dto
         //che in automatico viene JSONizzato
-        return ser.toDTO(s);
+        return ser.toDTO(t);
     }
     
-
-    //GET tutti
-    //GET id singolo
-    //POST singolo
-    //UPDATE singolo
-    //DELETE singolo
-
-
-
 }

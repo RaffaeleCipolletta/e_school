@@ -1,6 +1,6 @@
 package com.generation.e_school.dto;
 
-import com.generation.e_school.model.Student;
+import com.generation.e_school.model.Person;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,9 +9,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class StudentDTO extends PersonDTO
+public class TeacherDTO extends Person
 {
-
-    protected String classRoom;
-
+    private String subject;
+    
 }
