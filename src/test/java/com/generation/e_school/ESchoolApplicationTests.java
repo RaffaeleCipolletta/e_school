@@ -36,25 +36,9 @@ class ESchoolApplicationTests
 	void contextLoads() 
 	{
 
-		Student s = sRepo.findById(1).get();
-		Teacher t = tRepo.findById(2).get();
+		Teacher t = tRepo.findByNameAndSurname("Estaban", "Rubinettis").get();
 
-		Grade g1 = new Grade();
-		g1.setDay(LocalDate.now().minusDays(10));
-		g1.setSubject("CSS");
-		g1.setValue(6.5);
-		g1.setStudent(s);
-		g1.setTeacher(t);
-
-		Grade g2 = new Grade();
-		g2.setDay(LocalDate.now().minusDays(10));
-		g2.setSubject("JAVA");
-		g2.setValue(9.5);
-		g2.setStudent(s);
-		g2.setTeacher(t);
-
-		gRepo.save(g1);
-		gRepo.save(g2);
+		assertEquals("aaa", t);
 
 
 	}

@@ -13,7 +13,7 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 public class Teacher extends Person
 {
     private String subject;

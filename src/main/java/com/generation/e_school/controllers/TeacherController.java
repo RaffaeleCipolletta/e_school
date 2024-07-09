@@ -39,12 +39,6 @@ public class TeacherController
         return ser.toDTO(repo.findAll());
     }
     
-    @GetMapping("/{id}")
-    public TeacherDTOwGrades getOne(@PathVariable Integer id) 
-    {
-
-        return ser.toDTOwGrades(repo.findById(id).get());
-    }
 
     @PostMapping
     public TeacherDTO insertNewTeacher(@RequestBody TeacherDTO dto) 
