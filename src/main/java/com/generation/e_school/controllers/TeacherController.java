@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.e_school.dto.StudentDTOwGrades;
 import com.generation.e_school.dto.TeacherDTO;
+import com.generation.e_school.dto.TeacherDTOwGrades;
 import com.generation.e_school.dto.mappers.TeacherService;
 import com.generation.e_school.model.Teacher;
 import com.generation.e_school.repositories.TeacherRepository;
 
 
 @RestController
-@RequestMapping("/api/teachers")
+@RequestMapping("/teachers")
 public class TeacherController 
 {
 
@@ -40,7 +41,7 @@ public class TeacherController
     }
     
     @GetMapping("/{id}")
-    public TeacherDTOwGrades getOne(@PathVariable Integer id) 
+    public TeacherDTOwGrades getOne(@PathVariable Integer id)
     {
 
         return ser.toDTOwGrades(repo.findById(id).get());

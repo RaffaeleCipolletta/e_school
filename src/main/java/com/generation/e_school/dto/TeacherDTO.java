@@ -9,8 +9,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class TeacherDTO extends Person
+public class TeacherDTO extends PersonDTO
 {
-    private String subject;
+    protected String subject;
     
 }
