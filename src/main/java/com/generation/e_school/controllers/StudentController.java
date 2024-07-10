@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.generation.e_school.controllers.exceptions.StudentNotFoundException;
+import com.generation.e_school.controllers.exceptions.TeacherNotFoundException;
 import com.generation.e_school.dto.GradeDTO;
 import com.generation.e_school.dto.StudentDTO;
 import com.generation.e_school.dto.StudentDTOwGrades;
@@ -86,12 +88,12 @@ public class StudentController
         //2) prendo lo studente padre tramite id
         Optional<Student> sPadre = sRepo.findById(idstudent);
         if(sPadre.isEmpty())
-            throw new RuntimeException();
+            throw new StudentNotFoundException("Student with id "+idstudent+" not found");
 
         //3) prendo il teacher padre tramite nome e cognome
         Optional<Teacher> tPadre = tRepo.findByNameAndSurname(toSave.getTeacherName(), toSave.getTeacherSurname());
         if(tPadre.isEmpty())
-            throw new RuntimeException();
+            throw new TeacherNotFoundException("Teacher with name "+toSave.getTeacherName()+" "+toSave.getTeacherSurname()+" not found");
 
         //4) li imposto come padri al grade
         g.setStudent(sPadre.get());
