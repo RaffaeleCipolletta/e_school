@@ -12,6 +12,6 @@ import lombok.ToString;
 public class StudentDTO extends PersonDTO
 {
 
-    private String classRoom;
+    protected String classRoom;
 
 }
